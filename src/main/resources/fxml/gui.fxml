@@ -20,7 +20,7 @@
          <children>
             <HBox prefHeight="60.0">
                <children>
-                  <ToggleButton mnemonicParsing="false" prefHeight="50.0" prefWidth="90.0" selected="true" text="BMI">
+                  <ToggleButton mnemonicParsing="false" prefHeight="50.0" prefWidth="90.0" selected="true" styleClass="menuButton" text="BMI">
                      <HBox.margin>
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                      </HBox.margin>
@@ -28,12 +28,12 @@
                         <ToggleGroup fx:id="toggleMenuBar" />
                      </toggleGroup>
                   </ToggleButton>
-                  <ToggleButton mnemonicParsing="false" prefHeight="50.0" prefWidth="90.0" text="BMR" toggleGroup="$toggleMenuBar">
+                  <ToggleButton mnemonicParsing="false" prefHeight="50.0" prefWidth="90.0" styleClass="menuButton" text="BMR" toggleGroup="$toggleMenuBar">
                      <HBox.margin>
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                      </HBox.margin>
                   </ToggleButton>
-                  <ToggleButton mnemonicParsing="false" prefHeight="50.0" prefWidth="90.0" text="BF%" toggleGroup="$toggleMenuBar">
+                  <ToggleButton mnemonicParsing="false" prefHeight="50.0" prefWidth="90.0" styleClass="menuButton" text="BF%" toggleGroup="$toggleMenuBar">
                      <HBox.margin>
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                      </HBox.margin>
@@ -42,20 +42,17 @@
             </HBox>
             <HBox prefHeight="60.0" prefWidth="300.0">
                <children>
-                  <ToggleButton mnemonicParsing="false" prefHeight="50.0" prefWidth="90.0" text="CPM">
-                     <toggleGroup>
-                        <ToggleGroup fx:id="toggleMenuBar1" />
-                     </toggleGroup>
+                  <ToggleButton mnemonicParsing="false" prefHeight="50.0" prefWidth="90.0" styleClass="menuButton" text="CPM" toggleGroup="$toggleMenuBar">
                      <HBox.margin>
                         <Insets bottom="5.0" left="5.0" right="5.0" />
                      </HBox.margin>
                   </ToggleButton>
-                  <ToggleButton mnemonicParsing="false" prefHeight="50.0" prefWidth="90.0" text="WHR" toggleGroup="$toggleMenuBar1">
+                  <ToggleButton mnemonicParsing="false" prefHeight="50.0" prefWidth="90.0" styleClass="menuButton" text="WHR" toggleGroup="$toggleMenuBar">
                      <HBox.margin>
                         <Insets bottom="5.0" left="5.0" right="5.0" />
                      </HBox.margin>
                   </ToggleButton>
-                  <ToggleButton mnemonicParsing="false" prefHeight="50.0" prefWidth="90.0" text="Micro" toggleGroup="$toggleMenuBar1">
+                  <ToggleButton mnemonicParsing="false" prefHeight="50.0" prefWidth="90.0" styleClass="menuButton" text="Micro" toggleGroup="$toggleMenuBar">
                      <HBox.margin>
                         <Insets bottom="5.0" left="5.0" right="5.0" />
                      </HBox.margin>

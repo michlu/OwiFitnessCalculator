@@ -13,6 +13,7 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
 <VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="300.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="300.0" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.BmiController">
@@ -88,9 +89,24 @@
       <Button fx:id="btnReset" mnemonicParsing="false" onAction="#bmiReset" prefWidth="300.0" text="Reset" />
       <AnchorPane prefHeight="71.0" prefWidth="300.0">
          <children>
-            <Label fx:id="bmiLabel" layoutX="137.0" layoutY="28.0" text="BMI" />
-            <Label layoutX="38.0" layoutY="28.0" text="Ideal Weight" AnchorPane.leftAnchor="30.0" />
-            <Label layoutX="241.0" layoutY="28.0" text="Label" AnchorPane.rightAnchor="30.0" />
+            <Rectangle fx:id="bmiLabelRectangle" arcHeight="5.0" arcWidth="5.0" fill="#00ff15" height="70.0" layoutX="100.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" visible="false" width="100.0" />
+            <Label fx:id="bmiLabel" layoutX="127.0" layoutY="20.0" text=" BMI ">
+               <font>
+                  <Font size="20.0" />
+               </font></Label>
+            <Label layoutY="6.0" text="Minimum Weight" AnchorPane.leftAnchor="0.0" />
+            <Label layoutX="200.0" layoutY="6.0" text="Maksimum Weight" AnchorPane.rightAnchor="8.0" />
+            <Label fx:id="yourBMI" layoutX="128.0" layoutY="49.0" text="Your BMI" visible="false" />
+            <Label fx:id="labelMin" layoutX="25.0" layoutY="26.0" text="kg" visible="false">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+            <Label fx:id="labelMax" layoutX="229.0" layoutY="26.0" text="kg" visible="false">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
          </children>
       </AnchorPane>
       <ImageView fitHeight="50.0" fitWidth="300.0" pickOnBounds="true" preserveRatio="true">

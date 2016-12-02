@@ -7,11 +7,7 @@ import model.User;
  * @sience 2016-11-25
  */
 public class Model {
-    private static double bmi = 0;
 
-    public static double getBmi() {
-        return bmi;
-    }
 
     public static String wynikTxt;
 
@@ -21,15 +17,35 @@ public class Model {
         // wzor na bmi - waga podzielona przez wzrost(w metrach) do kwadratu
 
         height = height / 100;
-        bmi = weight / (Math.pow(height, 2));
+        double bmi = weight / (Math.pow(height, 2));
         System.out.println(height + " " + weight);
-        System.out.println(bmi);
         return bmi;
+    }
+
+    public double wagaNalezna(User user){
+
+        double height = user.getHeight();
+
+        // wzor waga nalezna = 20,5 x wzrost (w metrach) do kwadratu
+        height = height / 100;
+        double wn = 20.5 * (Math.pow(height, 2));
+
+        return wn;
+    }
+    public double wagaMinimalna(User user){
+        double height = user.getHeight();
+        height = height / 100;
+        return 18.5 * (Math.pow(height, 2));
+    }
+    public double wagaMaksymalna(User user){
+        double height = user.getHeight();
+        height = height / 100;
+        return 24.9 * (Math.pow(height, 2));
     }
 
     public static String wynikTxt(double bmi) {
         String txt = "";
-        if (bmi <= 18.5) {
+        if (bmi < 18.5) {
             txt = "Masz niedowagę.";
         } else if (bmi <= 24.9) {
             txt = "Masz prawidłową masę ciała";

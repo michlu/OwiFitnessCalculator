@@ -2,11 +2,18 @@ package controller;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Rectangle;
 import javafx.util.StringConverter;
 import javafx.util.converter.NumberStringConverter;
 import model.Model;
 import model.User;
 import model.ViewModel;
+
+
 
 /**
  * @author Michlu
@@ -19,30 +26,35 @@ public class BmiController {
     @FXML public TextField ageTextField, heightTextField, weightTextField;
     @FXML private Label ageOkLabel, heightOkLabel, weightOkLabel;
     @FXML private ToggleGroup toggleGender;
-    @FXML private Label bmiLabel;
+    @FXML private Label bmiLabel, yourBMI, labelMax, labelMin;
+    @FXML private Rectangle bmiLabelRectangle;
 
     private Model model = new Model();
     private ViewModel viewModel;
     private User user;
 
+
+    // Przekazanie ViewModel z Controllera
     public void setViewModel(ViewModel viewModel) {
         this.viewModel = viewModel;
     }
 
+    // Przekazanie Usera z Controllera
     public void setUser(User user) {
         this.user = user;
     }
 
 
+    // Medota uruchamiana w Controllerze po dodaniu do BmiControllera - ViewModel i User
     public void startController(){
 
+        // TextFieldy przyjmujace tylko liczby
         onlnyNumberTextField(ageTextField);
         onlnyNumberTextField(heightTextField);
         onlnyNumberTextField(weightTextField);
 
 
         StringConverter conventer = new NumberStringConverter();
-        if(!(viewModel ==null)) {
             // ToggleGroup gender zbindowany do
             btnMen.selectedProperty().bindBidirectional(viewModel.genderManPropertyProperty());
             btnWoman.selectedProperty().bindBidirectional(viewModel.genderWomanPropertyProperty());
@@ -70,7 +82,7 @@ public class BmiController {
             // Button Calculate zbndowany z disable calculate
 
             btnCalculate.disableProperty().bind(viewModel.disableCalculatePropertyProperty());
-        }
+
     }
     @FXML
     public void bmiReset(){
@@ -79,13 +91,61 @@ public class BmiController {
         ageTextField.setText("0");
         heightTextField.setText("0");
         weightTextField.setText("0");
+        bmiLabelRectangle.setVisible(false);
+        yourBMI.setVisible(false);
+        bmiLabel.setText("BMI");
+        labelMin.setVisible(false);
+        labelMax.setVisible(false);
+
     }
+    public void drawRectnagleBMI(Double BMI){
+        int colorRed = 0;
+        int colorGreen = 255;
+        int colorBlue = 255;
+        if (BMI <= 18.5) {
+            colorRed = 0;
+            colorGreen = 255;
+            colorBlue = 255;
+        } else if (BMI <= 24.9) {
+            colorRed = 0;
+            colorGreen = 255;
+            colorBlue = 33;
+        } else if (BMI <= 29.9) {
+            colorRed = 255;
+            colorGreen = 116;
+            colorBlue = 0;
+        } else if (BMI <= 34.9) {
+            colorRed = 255;
+            colorGreen = 106;
+            colorBlue = 0;
+        } else if (BMI <= 39.9) {
+            colorRed = 255;
+            colorGreen = 106;
+            colorBlue = 0;
+        } else {
+            colorRed = 255;
+            colorGreen = 106;
+            colorBlue = 0;
+        }
+
+        bmiLabelRectangle.setFill(Color.rgb(colorRed, colorGreen, colorBlue));
+        bmiLabelRectangle.setVisible(true);
+        yourBMI.setVisible(true);
+    }
+
 
     @FXML
     public void bmiCalculate(){
         user.getAtributes(viewModel);
         System.out.println(user.toString());
+        drawRectnagleBMI(model.obliczBmi(user));
         bmiLabel.setText(String.format("%.2f", model.obliczBmi(user)));
+        System.out.println(model.wagaNalezna(user));
+
+        labelMin.setText(String.format("%.1f", model.wagaMinimalna(user)) + "kg");
+        labelMin.setVisible(true);
+        labelMax.setText(String.format("%.1f", model.wagaMaksymalna(user)) + "kg");
+        labelMax.setVisible(true);
     }
 
     /**
