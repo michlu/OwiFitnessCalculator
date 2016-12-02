@@ -1,0 +1,46 @@
+.menuButton {
+    -fx-background-color:
+            #000000,
+            linear-gradient(#7ebcea, #2f4b8f),
+            linear-gradient(#426ab7, #263e75),
+            linear-gradient(#395cab, #223768);
+    -fx-background-insets: 0,1,2,3;
+    -fx-background-radius: 3,2,2,2;
+    /*-fx-padding: 12 30 12 30;*/
+    -fx-text-fill: white;
+    -fx-font-size: 12px;
+}
+.menuButton:hover {
+    -fx-background-color:
+            #000000,
+            linear-gradient(#7ebcea, #2f4b8f),
+            linear-gradient(#426ab7, #263e75),
+            linear-gradient(#7ebcea, #223768);
+}
+.menuButton:selected{
+    -fx-background-color:
+            #000000,
+            linear-gradient(#2f4b8f, #263e75),
+            linear-gradient(#426ab7, #263e75),
+            linear-gradient(#223768, #395cab);
+}
+.labelTitle{
+    -fx-text-fill: linear-gradient(#2f4b8f, #263e75);
+    -fx-effect: dropshadow( gaussian , #96D3FF , 0,0,0,2 );
+    -fx-font-weight: bold;
+    -fx-font-size: 14px;
+}
+
+.okLabelCheck {
+    -fx-text-fill: #00FF21;
+    -fx-background-color: #263e75;
+    -fx-background-radius: 50%;
+}
+.root{
+    -fx-background-color: linear-gradient(#96D3FF, #E2E2E2 );
+}
+
+/*.vboxBMI{*/
+    /*-fx-background-color: #383838;*/
+    /*-fx-text-fill: white;*/
+/*}*/

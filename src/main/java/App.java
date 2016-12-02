@@ -23,13 +23,13 @@ public class App extends Application {
         FXMLLoader loader = new FXMLLoader(this.getClass().getResource("/fxml/gui.fxml"));
         Pane pane = loader.load();
         Scene scene = new Scene(pane);
+        scene.getStylesheets().add(getClass().getResource("/css/themeBlue.css").toExternalForm());
         Stage stage = new Stage();
+        stage.setMaxWidth(305);
         stage.setScene(scene);
         stage.setTitle("OwiFitnessCalculator");
         stage.setResizable(false);
         stage.show();
-
-
 
     }
 }

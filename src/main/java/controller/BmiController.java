@@ -7,6 +7,8 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
+import javafx.scene.text.Text;
+import javafx.scene.text.TextFlow;
 import javafx.util.StringConverter;
 import javafx.util.converter.NumberStringConverter;
 import model.Model;
@@ -26,7 +28,7 @@ public class BmiController {
     @FXML public TextField ageTextField, heightTextField, weightTextField;
     @FXML private Label ageOkLabel, heightOkLabel, weightOkLabel;
     @FXML private ToggleGroup toggleGender;
-    @FXML private Label bmiLabel, yourBMI, labelMax, labelMin;
+    @FXML private Label bmiLabel, yourBMI, labelMax, labelMin, labelResultBmi;
     @FXML private Rectangle bmiLabelRectangle;
 
     private Model model = new Model();
@@ -96,6 +98,7 @@ public class BmiController {
         bmiLabel.setText("BMI");
         labelMin.setVisible(false);
         labelMax.setVisible(false);
+        labelResultBmi.setText("");
 
     }
     public void drawRectnagleBMI(Double BMI){
@@ -146,6 +149,12 @@ public class BmiController {
         labelMin.setVisible(true);
         labelMax.setText(String.format("%.1f", model.wagaMaksymalna(user)) + "kg");
         labelMax.setVisible(true);
+
+        setTextFlowBmi();
+    }
+
+    public void setTextFlowBmi(){
+        labelResultBmi.setText(model.wynikTxt(user));
     }
 
     /**

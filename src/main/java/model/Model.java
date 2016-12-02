@@ -43,7 +43,11 @@ public class Model {
         return 24.9 * (Math.pow(height, 2));
     }
 
-    public static String wynikTxt(double bmi) {
+    public static String wynikTxt(User user) {
+        double height = user.getHeight();
+        height = height / 100;
+        double bmi = user.getWeight() / (Math.pow(height, 2));
+
         String txt = "";
         if (bmi < 18.5) {
             txt = "Masz niedowagę.";
@@ -58,8 +62,6 @@ public class Model {
         } else {
             txt = "Masz otyłość stopnia  III";
         }
-        wynikTxt = txt;
-        System.out.println(txt);
         return txt;
     }
 }
