@@ -8,6 +8,7 @@ import model.User;
 import model.ViewModel;
 
 import java.io.IOException;
+import java.util.ResourceBundle;
 
 /**
  * @author Michlu
@@ -30,8 +31,10 @@ public class Controller {
         System.out.println("Controller-Vierwmodel = " + viewModel.toString());
         System.out.println("Controller-User = " + user.hashCode());
 
+        ResourceBundle bundle = ResourceBundle.getBundle("bundles.messages");
         FXMLLoader loader = new FXMLLoader(this.getClass().getResource("/fxml/bmi_gui.fxml"));
         try {
+            loader.setResources(bundle);
             bmiMain = loader.load();
             BmiController bmiController = loader.getController();
             // przekazanie do controllera ViewModel i User aby wszystkie kontrolery dzialaly na tych samych danych
@@ -45,6 +48,7 @@ public class Controller {
 
         loader = new FXMLLoader(this.getClass().getResource("/fxml/aibw_gui.fxml"));
         try {
+            loader.setResources(bundle);
             aibwMain = loader.load();
             AIBWController aibwController = loader.getController();
             // przekazanie do controllera ViewModel i User aby wszystkie kontrolery dzialaly na tych samych danych

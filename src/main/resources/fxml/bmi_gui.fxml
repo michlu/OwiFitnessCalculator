@@ -18,7 +18,7 @@
 
 <VBox fx:id="bmiMain" alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="300.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="300.0" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.BmiController">
    <children>
-      <Label styleClass="labelTitle" text="Calculator Body Mass Index">
+      <Label styleClass="labelTitle" text="%title.BMI">
          <VBox.margin>
             <Insets bottom="10.0" top="10.0" />
          </VBox.margin>
@@ -37,18 +37,18 @@
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Label text="Age" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
-            <Label text="Height" GridPane.halignment="CENTER" GridPane.rowIndex="2" />
-            <Label text="Weight" GridPane.halignment="CENTER" GridPane.rowIndex="3" />
+            <Label text="%label.age" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
+            <Label text="%label.height" GridPane.halignment="CENTER" GridPane.rowIndex="2" />
+            <Label text="%label.weight" GridPane.halignment="CENTER" GridPane.rowIndex="3" />
             <TextField fx:id="ageTextField" GridPane.columnIndex="1" GridPane.rowIndex="1" />
             <TextField fx:id="heightTextField" GridPane.columnIndex="1" GridPane.rowIndex="2" />
             <TextField fx:id="weightTextField" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-            <ToggleButton fx:id="btnMen" mnemonicParsing="false" styleClass="genderToggleButton" text="Men" GridPane.columnIndex="1" GridPane.halignment="CENTER">
+            <ToggleButton fx:id="btnMen" mnemonicParsing="false" styleClass="genderToggleButton" text="%btn.men" GridPane.columnIndex="1" GridPane.halignment="CENTER">
                <toggleGroup>
                   <ToggleGroup fx:id="toggleGender" />
                </toggleGroup>
             </ToggleButton>
-            <ToggleButton fx:id="btnWoman" mnemonicParsing="false" styleClass="genderToggleButton" text="Women" toggleGroup="$toggleGender" GridPane.columnIndex="2" GridPane.halignment="CENTER" />
+            <ToggleButton fx:id="btnWoman" mnemonicParsing="false" styleClass="genderToggleButton" text="%btn.woman" toggleGroup="$toggleGender" GridPane.columnIndex="2" GridPane.halignment="CENTER" />
             <Label fx:id="ageOkLabel" styleClass="okLabelCheck" text="OK" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="1">
                <font>
                   <Font name="System Bold" size="11.0" />
@@ -64,7 +64,7 @@
                   <Font name="System Bold" size="11.0" />
                </font>
             </Label>
-            <Label text="years" GridPane.columnIndex="2" GridPane.rowIndex="1">
+            <Label text="%label.years" GridPane.columnIndex="2" GridPane.rowIndex="1">
                <padding>
                   <Insets left="10.0" />
                </padding>
@@ -81,7 +81,7 @@
             </Label>
          </children>
       </GridPane>
-      <Button fx:id="btnCalculate" alignment="CENTER" mnemonicParsing="false" onAction="#bmiCalculate" prefWidth="300.0" text="Calculate">
+      <Button fx:id="btnCalculate" alignment="CENTER" mnemonicParsing="false" onAction="#bmiCalculate" prefWidth="300.0" text="%btn.calculate">
          <VBox.margin>
             <Insets top="10.0" />
          </VBox.margin>
@@ -94,9 +94,9 @@
                <font>
                   <Font size="20.0" />
                </font></Label>
-            <Label layoutX="14.0" layoutY="6.0" text="Minimum Weight" AnchorPane.leftAnchor="14.0" />
-            <Label layoutX="203.0" layoutY="6.0" text="Maksimum Weight" AnchorPane.rightAnchor="8.0" />
-            <Label fx:id="yourBMI" layoutX="128.0" layoutY="49.0" text="Your BMI" visible="false" />
+            <Label layoutX="14.0" layoutY="6.0" text="%label.min.weight" AnchorPane.leftAnchor="14.0" />
+            <Label layoutX="203.0" layoutY="6.0" text="%label.max.weight" AnchorPane.rightAnchor="8.0" />
+            <Label fx:id="yourBMI" layoutX="128.0" layoutY="49.0" text="%label.yourbmi" visible="false" />
             <Label fx:id="labelMin" layoutX="25.0" layoutY="26.0" text="kg" visible="false">
                <font>
                   <Font size="15.0" />

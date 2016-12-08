@@ -141,7 +141,6 @@ public class BmiController {
         System.out.println(user.toString());
         drawRectnagleBMI(model.obliczBmi(user));
         bmiLabel.setText(String.format("%.2f", model.obliczBmi(user)));
-        System.out.println(model.wagaNalezna(user));
 
         labelMin.setText(String.format("%.1f", model.wagaMinimalna(user)) + "kg");
         labelMin.setVisible(true);
