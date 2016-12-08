@@ -7,20 +7,13 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="300.0" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.Controller">
-   <center>
-      <VBox fx:id="vboxBMI" prefHeight="383.0" prefWidth="400.0" BorderPane.alignment="CENTER">
-      <children>
-         <fx:include fx:id="tab" source="bmi_gui.fxml" />
-      </children>
-      </VBox>
-   </center>
+<BorderPane fx:id="menuBorderPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="300.0" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.Controller">
    <top>
       <VBox prefHeight="115.0" prefWidth="300.0" BorderPane.alignment="CENTER">
          <children>
             <HBox prefHeight="50.0">
                <children>
-                  <ToggleButton mnemonicParsing="false" prefHeight="50.0" prefWidth="100.0" selected="true" styleClass="menuButton" text="BMI">
+                  <ToggleButton mnemonicParsing="false" onAction="#openBMI" prefHeight="50.0" prefWidth="100.0" selected="true" styleClass="menuButton" text="BMI">
                      <HBox.margin>
                         <Insets />
                      </HBox.margin>
@@ -28,7 +21,7 @@
                         <ToggleGroup fx:id="toggleMenuBar" />
                      </toggleGroup>
                   </ToggleButton>
-                  <ToggleButton mnemonicParsing="false" prefHeight="50.0" prefWidth="100.0" styleClass="menuButton" text="BMR" toggleGroup="$toggleMenuBar">
+                  <ToggleButton mnemonicParsing="false" onAction="#openAIBW" prefHeight="50.0" prefWidth="100.0" styleClass="menuButton" text="AIBW" toggleGroup="$toggleMenuBar">
                      <HBox.margin>
                         <Insets />
                      </HBox.margin>
@@ -52,7 +45,7 @@
                         <Insets />
                      </HBox.margin>
                   </ToggleButton>
-                  <ToggleButton mnemonicParsing="false" prefHeight="50.0" prefWidth="100.0" styleClass="menuButton" text="Micro" toggleGroup="$toggleMenuBar">
+                  <ToggleButton mnemonicParsing="false" prefHeight="50.0" prefWidth="100.0" styleClass="menuButton" text="BMR" toggleGroup="$toggleMenuBar">
                      <HBox.margin>
                         <Insets />
                      </HBox.margin>

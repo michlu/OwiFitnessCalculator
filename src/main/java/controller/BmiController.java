@@ -35,59 +35,57 @@ public class BmiController {
     private ViewModel viewModel;
     private User user;
 
-
-    // Przekazanie ViewModel z Controllera
     public void setViewModel(ViewModel viewModel) {
         this.viewModel = viewModel;
     }
 
-    // Przekazanie Usera z Controllera
     public void setUser(User user) {
         this.user = user;
     }
+    public void start(){
+
+        StringConverter conventer = new NumberStringConverter();
+        // ToggleGroup gender zbindowany do
+        btnMen.selectedProperty().bindBidirectional(viewModel.genderManPropertyProperty());
+        btnWoman.selectedProperty().bindBidirectional(viewModel.genderWomanPropertyProperty());
 
 
-    // Medota uruchamiana w Controllerze po dodaniu do BmiControllera - ViewModel i User
-    public void startController(){
+        // Wiek textfield zbindowany z property age
+        ageTextField.textProperty().bindBidirectional(viewModel.agePropertyProperty(), conventer);
+
+        ageTextField.disableProperty().bind(viewModel.okGenderPropertyProperty());
+        ageOkLabel.visibleProperty().bind(viewModel.okAgePropertyProperty());
+
+
+        // Wzrost textfield zbindowany z property height
+
+        heightTextField.textProperty().bindBidirectional(viewModel.heightPropertyProperty(), conventer);
+        heightTextField.disableProperty().bind(viewModel.disableHeightPropertyProperty());
+        heightOkLabel.visibleProperty().bind(viewModel.okHeigihtPropertyProperty());
+
+
+        // Waga TextField zbindowany z weight property
+
+        weightTextField.textProperty().bindBidirectional(viewModel.weightPropertyProperty(), conventer);
+        weightTextField.disableProperty().bind(viewModel.disableWeightPropertyProperty());
+        weightOkLabel.visibleProperty().bind(viewModel.okWeightPropertyProperty());
+
+        // Button Calculate zbndowany z disable calculate
+
+        btnCalculate.disableProperty().bind(viewModel.disableCalculatePropertyProperty());
+    }
+
+    @FXML
+    public void initialize(){
 
         // TextFieldy przyjmujace tylko liczby
         onlnyNumberTextField(ageTextField);
         onlnyNumberTextField(heightTextField);
         onlnyNumberTextField(weightTextField);
 
-
-        StringConverter conventer = new NumberStringConverter();
-            // ToggleGroup gender zbindowany do
-            btnMen.selectedProperty().bindBidirectional(viewModel.genderManPropertyProperty());
-            btnWoman.selectedProperty().bindBidirectional(viewModel.genderWomanPropertyProperty());
-
-
-            // Wiek textfield zbindowany z property age
-            ageTextField.textProperty().bindBidirectional(viewModel.agePropertyProperty(), conventer);
-            ageTextField.disableProperty().bind(viewModel.okGenderPropertyProperty());
-            ageOkLabel.visibleProperty().bind(viewModel.okAgePropertyProperty());
-
-
-            // Wzrost textfield zbindowany z property height
-
-            heightTextField.textProperty().bindBidirectional(viewModel.heightPropertyProperty(), conventer);
-            heightTextField.disableProperty().bind(viewModel.disableHeightPropertyProperty());
-            heightOkLabel.visibleProperty().bind(viewModel.okHeigihtPropertyProperty());
-
-
-            // Waga TextField zbindowany z weight property
-
-            weightTextField.textProperty().bindBidirectional(viewModel.weightPropertyProperty(), conventer);
-            weightTextField.disableProperty().bind(viewModel.disableWeightPropertyProperty());
-            weightOkLabel.visibleProperty().bind(viewModel.okWeightPropertyProperty());
-
-            // Button Calculate zbndowany z disable calculate
-
-            btnCalculate.disableProperty().bind(viewModel.disableCalculatePropertyProperty());
-
     }
     @FXML
-    public void bmiReset(){
+    public void btnReset(){
         btnMen.setSelected(false);
         btnWoman.setSelected(false);
         ageTextField.setText("0");

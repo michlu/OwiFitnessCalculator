@@ -64,4 +64,75 @@ public class Model {
         }
         return txt;
     }
+    public double obliczWzorBroca(User user){
+        int gender = user.getGender();
+        double height = user.getHeight();
+        double result;
+        if(gender == 1){
+            result = (height - 100) * 0.90;
+        }
+        else{
+            result = (height - 100) * 0.85;
+        }
+        return result;
+    }
+    public double obliczWzorBrocaBrugsha(User user){
+        double height = user.getHeight();
+        double result;
+        if(height <= 164){
+            result = (height - 100);
+        }
+        else if(height <= 175){
+            result = (height - 105);
+        }
+        else {
+            result = (height - 110);
+        }
+        return result;
+    }
+    public double obliczWzorPottona(User user){
+        int gender = user.getGender();
+        double height = user.getHeight();
+        double result;
+        if(height>150){
+            if(gender == 1){
+                result = height - 100 - (height - 100) / 20;
+            }
+            else{
+                result = height - 100 - (height - 100) / 10;
+            }
+        }
+        else{
+            result = 0;
+        }
+        return result;
+    }
+    public double obliczWzorLorenza(User user){
+        int gender = user.getGender();
+        double height = user.getHeight();
+        double result;
+        if(height>150){
+            if(gender == 1){
+                result = height - 100 - 0.25*(height - 150);
+            }
+            else{
+                result = height - 100 - 0.5*(height - 150);
+            }
+        }
+        else{
+            result = 0;
+        }
+        return result;
+    }
+    public double obliczWzorATUnZ(User user){
+        double height = user.getHeight();
+        double result;
+        if(height>150){
+            result = 50 + 0.75*(height - 150);
+        }
+        else{
+            result = 0;
+        }
+        return result;
+    }
 }

@@ -16,7 +16,7 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="300.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="300.0" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.BmiController">
+<VBox fx:id="bmiMain" alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="300.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="300.0" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.BmiController">
    <children>
       <Label styleClass="labelTitle" text="Calculator Body Mass Index">
          <VBox.margin>
@@ -43,12 +43,12 @@
             <TextField fx:id="ageTextField" GridPane.columnIndex="1" GridPane.rowIndex="1" />
             <TextField fx:id="heightTextField" GridPane.columnIndex="1" GridPane.rowIndex="2" />
             <TextField fx:id="weightTextField" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-            <ToggleButton fx:id="btnMen" mnemonicParsing="false" text="Men" GridPane.columnIndex="1" GridPane.halignment="CENTER">
+            <ToggleButton fx:id="btnMen" mnemonicParsing="false" styleClass="genderToggleButton" text="Men" GridPane.columnIndex="1" GridPane.halignment="CENTER">
                <toggleGroup>
                   <ToggleGroup fx:id="toggleGender" />
                </toggleGroup>
             </ToggleButton>
-            <ToggleButton fx:id="btnWoman" mnemonicParsing="false" text="Women" toggleGroup="$toggleGender" GridPane.columnIndex="2" GridPane.halignment="CENTER" />
+            <ToggleButton fx:id="btnWoman" mnemonicParsing="false" styleClass="genderToggleButton" text="Women" toggleGroup="$toggleGender" GridPane.columnIndex="2" GridPane.halignment="CENTER" />
             <Label fx:id="ageOkLabel" styleClass="okLabelCheck" text="OK" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="1">
                <font>
                   <Font name="System Bold" size="11.0" />
@@ -86,7 +86,7 @@
             <Insets top="10.0" />
          </VBox.margin>
       </Button>
-      <Button fx:id="btnReset" mnemonicParsing="false" onAction="#bmiReset" prefWidth="300.0" text="Reset" />
+      <Button fx:id="btnReset" mnemonicParsing="false" onAction="#btnReset" prefWidth="300.0" text="Reset" />
       <AnchorPane prefHeight="71.0" prefWidth="300.0">
          <children>
             <Rectangle fx:id="bmiLabelRectangle" arcHeight="5.0" arcWidth="5.0" fill="#00ff15" height="70.0" layoutX="100.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" visible="false" width="100.0" AnchorPane.topAnchor="1.0" />
