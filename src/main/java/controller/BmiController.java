@@ -25,7 +25,7 @@ public class BmiController {
 
     @FXML private ToggleButton btnMen, btnWoman;
     @FXML private Button btnCalculate;
-    @FXML public TextField ageTextField, heightTextField, weightTextField;
+    @FXML private TextField ageTextField, heightTextField, weightTextField;
     @FXML private Label ageOkLabel, heightOkLabel, weightOkLabel;
     @FXML private ToggleGroup toggleGender;
     @FXML private Label bmiLabel, yourBMI, labelMax, labelMin, labelResultBmi;

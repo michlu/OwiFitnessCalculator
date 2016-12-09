@@ -22,7 +22,7 @@ public class Controller {
     @FXML private VBox vboxMenu;
     @FXML private VBox vboxBMI;
     @FXML private BorderPane menuBorderPane;
-    @FXML private VBox bmiMain, aibwMain;
+    @FXML private VBox bmiMain, aibwMain, bmrMain;
 
 
     @FXML
@@ -58,6 +58,19 @@ public class Controller {
         } catch (IOException e) {
             e.printStackTrace();
         }
+
+        loader = new FXMLLoader(this.getClass().getResource("/fxml/bmr_gui.fxml"));
+        try {
+            loader.setResources(bundle);
+            bmrMain = loader.load();
+            BmrController bmrController = loader.getController();
+            // przekazanie do controllera ViewModel i User aby wszystkie kontrolery dzialaly na tych samych danych
+            bmrController.setViewModel(viewModel);
+            bmrController.setUser(user);
+            bmrController.start();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     @FXML
@@ -68,6 +81,9 @@ public class Controller {
     @FXML
     public void openAIBW(){
         menuBorderPane.setCenter(aibwMain);
-
+    }
+    @FXML
+    public void openBMR(){
+        menuBorderPane.setCenter(bmrMain);
     }
 }

@@ -3,6 +3,7 @@ import javafx.application.Application;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import model.User;
@@ -23,7 +24,7 @@ public class App extends Application {
     }
 
     public void start(Stage primaryStage) throws Exception {
-        Locale.setDefault(new Locale("en"));
+        Locale.setDefault(new Locale("pl"));
 
         FXMLLoader loader = new FXMLLoader(this.getClass().getResource("/fxml/gui.fxml"));
         Pane pane = loader.load();

@@ -1,6 +1,7 @@
 package model;
 
 import javafx.beans.property.*;
+import javafx.collections.ObservableList;
 
 /**
  * @author Michlu
@@ -32,6 +33,9 @@ public class ViewModel {
     private BooleanProperty okCalculateProperty = new SimpleBooleanProperty(false);
     private BooleanProperty disableCalculateProperty = new SimpleBooleanProperty(true);
 
+    // CheckBox aktywnosc
+    private IntegerProperty activityIndexProperty = new SimpleIntegerProperty();
+
 
     public ViewModel(){
             okGenderProperty.bind(genderManProperty.not().and(genderWomanProperty.not()));
@@ -45,6 +49,19 @@ public class ViewModel {
 
 
     }
+
+    public int getActivityIndexProperty() {
+        return activityIndexProperty.get();
+    }
+
+    public IntegerProperty activityIndexPropertyProperty() {
+        return activityIndexProperty;
+    }
+
+    public void setActivityIndexProperty(int activityIndexProperty) {
+        this.activityIndexProperty.set(activityIndexProperty);
+    }
+
 
     public boolean isGenderManProperty() {
         return genderManProperty.get();

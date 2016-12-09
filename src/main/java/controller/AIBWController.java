@@ -17,7 +17,7 @@ public class AIBWController {
     @FXML
     private ToggleButton btnMen, btnWoman;
     @FXML private Button btnCalculate;
-    @FXML public TextField ageTextField, heightTextField;
+    @FXML private TextField ageTextField, heightTextField;
     @FXML private Label ageOkLabel, heightOkLabel;
     @FXML private ToggleGroup toggleGender;
     @FXML private Label labelWN, labelWB, labelWBB, labelWP, labelWL, labelATUNZ, labelS;

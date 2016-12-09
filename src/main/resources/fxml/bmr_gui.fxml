@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Slider?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleButton?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox fx:id="bmiMain" alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="300.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="300.0" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.BmrController">
+   <children>
+      <Label styleClass="labelTitle" text="%title.BMR">
+         <VBox.margin>
+            <Insets bottom="10.0" top="10.0" />
+         </VBox.margin>
+      </Label>
+      <GridPane prefHeight="169.0" prefWidth="300.0">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <Label text="%label.age" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
+            <Label text="%label.height" GridPane.halignment="CENTER" GridPane.rowIndex="2" />
+            <Label text="%label.weight" GridPane.halignment="CENTER" GridPane.rowIndex="3" />
+            <TextField fx:id="ageTextField" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <TextField fx:id="heightTextField" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <TextField fx:id="weightTextField" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            <ToggleButton fx:id="btnMen" mnemonicParsing="false" styleClass="genderToggleButton" text="%btn.men" GridPane.columnIndex="1" GridPane.halignment="CENTER">
+               <toggleGroup>
+                  <ToggleGroup fx:id="toggleGender" />
+               </toggleGroup>
+            </ToggleButton>
+            <ToggleButton fx:id="btnWoman" mnemonicParsing="false" styleClass="genderToggleButton" text="%btn.woman" toggleGroup="$toggleGender" GridPane.columnIndex="2" GridPane.halignment="CENTER" />
+            <Label fx:id="ageOkLabel" styleClass="okLabelCheck" text="OK" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+               <font>
+                  <Font name="System Bold" size="11.0" />
+               </font>
+            </Label>
+            <Label fx:id="heightOkLabel" styleClass="okLabelCheck" text="OK" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="2">
+               <font>
+                  <Font name="System Bold" size="11.0" />
+               </font>
+            </Label>
+            <Label fx:id="weightOkLabel" styleClass="okLabelCheck" text="OK" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="3">
+               <font>
+                  <Font name="System Bold" size="11.0" />
+               </font>
+            </Label>
+            <Label text="%label.years" GridPane.columnIndex="2" GridPane.rowIndex="1">
+               <padding>
+                  <Insets left="10.0" />
+               </padding>
+            </Label>
+            <Label text="cm" GridPane.columnIndex="2" GridPane.rowIndex="2">
+               <padding>
+                  <Insets left="10.0" />
+               </padding>
+            </Label>
+            <Label text="kg" GridPane.columnIndex="2" GridPane.rowIndex="3">
+               <padding>
+                  <Insets left="10.0" />
+               </padding>
+            </Label>
+            <ComboBox fx:id="comboBox" prefWidth="220.0" GridPane.columnIndex="1" GridPane.columnSpan="3" GridPane.rowIndex="4" />
+            <Label text="%label.activity" GridPane.halignment="CENTER" GridPane.rowIndex="4" />
+         </children>
+      </GridPane>
+      <Button fx:id="btnCalculate" alignment="CENTER" mnemonicParsing="false" onAction="#bmrCalculate" prefWidth="300.0" text="%btn.calculate">
+         <VBox.margin>
+            <Insets top="10.0" />
+         </VBox.margin>
+      </Button>
+      <Button fx:id="btnReset" mnemonicParsing="false" onAction="#btnReset" prefWidth="300.0" text="Reset" />
+      <AnchorPane prefHeight="215.0" prefWidth="300.0">
+         <children>
+            <Label layoutX="10.0" layoutY="6.0" text="%bmr.label.miffin" AnchorPane.topAnchor="5.0" />
+            <Label layoutX="158.0" layoutY="6.0" text="%bmr.label.harris" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="5.0" />
+            <Slider blockIncrement="50.0" layoutX="5.0" layoutY="141.0" majorTickUnit="100.0" max="400.0" min="-400.0" minorTickCount="50" prefHeight="31.0" prefWidth="290.0" showTickLabels="true" snapToTicks="true" />
+            <Label layoutX="132.0" layoutY="125.0" text="%bmr.label.calories" />
+            <Label fx:id="labelResultHarris" layoutX="209.0" layoutY="30.0" AnchorPane.leftAnchor="50.0">
+               <font>
+                  <Font size="13.0" />
+               </font>
+            </Label>
+            <Label fx:id="labelResultMifflin" layoutX="58.0" layoutY="30.0" AnchorPane.rightAnchor="50.0">
+               <font>
+                  <Font size="13.0" />
+               </font>
+            </Label>
+            <Label fx:id="labelResultTMR1" layoutX="130.0" layoutY="78.0" text="TMR" AnchorPane.leftAnchor="50.0">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <Label layoutX="82.0" layoutY="62.0" text="%bmr.label.tmr" />
+            <Label fx:id="labelResultTMR2" layoutX="206.0" layoutY="78.0" text="TMR" AnchorPane.rightAnchor="50.0">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+         </children></AnchorPane>
+   </children>
+</VBox>

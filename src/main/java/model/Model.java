@@ -145,13 +145,27 @@ public class Model {
         double height = user.getHeight();
         double weight = user.getWeight();
         double result;
-
         // SWE
         if(gender == 1){
             result = (10*weight)+(6.25*height)-(5*age)+5;
         }
         else{
             result = (10*weight)+(6.25*height)-(5*age)-161;
+        }
+        return result;
+    }
+    public double obliczPpmHarrisBenedict(User user){
+        int gender = user.getGender();
+        int age = user.getAge();
+        double height = user.getHeight();
+        double weight = user.getWeight();
+        double result;
+        // SWE
+        if(gender == 1){
+            result = 66.5+(13.75*weight)+(5.003*height)-(6.775*age);
+        }
+        else{
+            result = 655.1+(9.563*weight)+(1.85*height)-(4.676*age);
         }
         return result;
     }
