@@ -11,7 +11,22 @@ import java.util.ResourceBundle;
 public class Model {
 
 
-    ResourceBundle bundle = ResourceBundle.getBundle("bundles.messages");
+    ResourceBundle bundle = ResourceBundle.getBundle("bundles.model");
+
+    /**
+     * Oblicza srednia arytmetyczna z przekazanych liczb
+     * @param ary tablica liczb
+     * @return zwraca double średniej arytmetycznej
+     */
+    public static double mean(double[] ary) {
+        double avg = 0;
+        int t = 1;
+        for (double x : ary) {
+            avg += (x - avg) / t;
+            ++t;
+        }
+        return avg;
+    }
 
     public static double obliczBmi(User user) {
         double height = user.getHeight();
@@ -168,6 +183,45 @@ public class Model {
             result = 655.1+(9.563*weight)+(1.85*height)-(4.676*age);
         }
         return result;
+    }
+    //BF
+    public double obliczBF(User user){
+        double result;
+        /**
+         Body density = 1.1093800 – (0.0008267 x #3) + 0.0000016 x #3’2) – (0.0002574 x #4)
+         #3 – suma pomiarów
+         #3’2 – suma pomiarów podniesiona do potęgi 2
+         #4 – wiek
+
+         BF% = (457 / Body density) – 414.2
+         BF% = (495 / Body density) – 450
+         (wyciągamy średnią)
+         */
+        int gender = user.getGender();
+        //Man:
+        double chest = user.getChest(); //klatka
+        double navel = user.getNavel(); //pepek
+        //Woman:
+        double triceps = user.getTriceps();
+        double hip = user.getHip(); //biodro
+
+        double thigh = user.getThigh(); //udo
+        double sumMan = chest+navel+thigh;
+        double sumWoman = triceps+hip+thigh;
+        int age = user.getAge();
+
+        double bodyDensity;
+        if(gender == 1){ //Man
+            bodyDensity = 1.1093800 - (0.0008267*sumMan) + (0.0000016*Math.pow(sumMan, 2)) - (0.0002574*age);
+        }
+        else{ //Woman
+            bodyDensity = 1.1099421 - (0.0009929*sumWoman) + (0.0000016*Math.pow(sumWoman, 2)) - (0.0002574*age);
+        }
+        double bf1 = (457/bodyDensity)-414.2;
+        double bf2 = (495/bodyDensity)-450;
+        double[] avgBF = {bf1, bf2};
+
+        return result = mean(avgBF);
     }
 
 }
