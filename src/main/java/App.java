@@ -36,6 +36,8 @@ public class App extends Application {
         stage.setMaxWidth(305);
         stage.setScene(scene);
         stage.setTitle("OwiFitnessCalculator");
+        // Ikona po przerobkach: http://www.freeiconspng.com/free-images/fitness-icon-png-280
+        stage.getIcons().add(new Image("/graphics/icon_bmi.png"));
         stage.setResizable(false);
         stage.show();
 
