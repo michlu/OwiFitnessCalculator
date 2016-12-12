@@ -50,7 +50,7 @@ public class Model {
         return 24.9 * (Math.pow(height, 2));
     }
 
-    public String wynikTxt(User user) {
+    public String wynikTxtBmi(User user) {
         double height = user.getHeight();
         height = height / 100;
         double bmi = user.getWeight() / (Math.pow(height, 2));
@@ -223,5 +223,35 @@ public class Model {
 
         return result = mean(avgBF);
     }
+    // Obliczanie WHR
+    public double obliczWHR(User user){
+        double waistCircumference = user.getWaistCircumference();
+        double hipCircumference = user.getHipCircumference();
+        double whr = waistCircumference/hipCircumference;
+        return whr;
+    }
 
+    public String wynikTxtWhr(User user){
+        double whr = obliczWHR(user);
+        int gender = user.getGender();
+
+        String txt = "";
+        if(gender == 1){ // Man
+            if (whr > 1) {
+                txt = bundle.getString("result.whr.man1"); // Otylosc aneroidalna (jablko)
+            }
+            else{
+                txt = bundle.getString("result.whr.man2"); // Otylosc ginoidalna (gruszka)
+            }
+        }
+        else{ // Woman
+            if (whr > 0.8) {
+                txt = bundle.getString("result.whr.woman1"); // Otylosc aneroidalna (jablko)
+            }
+            else{
+                txt = bundle.getString("result.whr.woman2"); // Otylosc ginoidalna (gruszka)
+            }
+        }
+        return txt;
+    }
 }

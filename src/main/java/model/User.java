@@ -13,6 +13,11 @@ public class User {
     private double waistCircumference;
     private double hipCircumference;
     private double activity; // 1.2 , 1.4 , 1.6 , 1.75 , 2.0 , 2.2
+    private double chest; //klatka
+    private double navel; //pepek
+    private double triceps;
+    private double hip; //biodro
+    private double thigh; //udo
 
 
     public void getAtributes(ViewModel viewModel){
@@ -48,6 +53,15 @@ public class User {
                 activity = 2.2;
                 break;
         }
+        if(gender == 1){ //Man
+            chest = viewModel.getChestProperty();
+            navel = viewModel.getNavelProperty();
+        }
+        else{ //Woman
+            triceps = viewModel.getTricepsProperty();
+            hip = viewModel.getHipProperty(); //biodro
+        }
+        thigh = viewModel.getThighProperty();
     }
 
     @Override
@@ -57,9 +71,14 @@ public class User {
                 ", age=" + age +
                 ", height=" + height +
                 ", weight=" + weight +
-                ", activity=" + activity +
                 ", waistCircumference=" + waistCircumference +
                 ", hipCircumference=" + hipCircumference +
+                ", activity=" + activity +
+                ", chest=" + chest +
+                ", navel=" + navel +
+                ", triceps=" + triceps +
+                ", hip=" + hip +
+                ", thigh=" + thigh +
                 '}';
     }
 
@@ -81,5 +100,33 @@ public class User {
 
     public double getActivity() {
         return activity;
+    }
+
+    public double getChest() {
+        return chest;
+    }
+
+    public double getNavel() {
+        return navel;
+    }
+
+    public double getTriceps() {
+        return triceps;
+    }
+
+    public double getHip() {
+        return hip;
+    }
+
+    public double getThigh() {
+        return thigh;
+    }
+
+    public double getWaistCircumference() {
+        return waistCircumference;
+    }
+
+    public double getHipCircumference() {
+        return hipCircumference;
     }
 }

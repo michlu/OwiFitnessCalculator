@@ -36,6 +36,31 @@ public class ViewModel {
     // CheckBox aktywnosc
     private IntegerProperty activityIndexProperty = new SimpleIntegerProperty();
 
+    // Propertisy do BF ============================================================
+
+    private DoubleProperty chestProperty = new SimpleDoubleProperty();
+    private BooleanProperty disableChestProperty = new SimpleBooleanProperty(true);
+    private BooleanProperty okChestProperty = new SimpleBooleanProperty(false);
+
+    private DoubleProperty navelProperty = new SimpleDoubleProperty();
+    private BooleanProperty disableNavelProperty = new SimpleBooleanProperty(true);
+    private BooleanProperty okNavelProperty = new SimpleBooleanProperty(false);
+
+    private DoubleProperty tricepsProperty = new SimpleDoubleProperty();
+    private BooleanProperty disableTricepsProperty = new SimpleBooleanProperty(true);
+    private BooleanProperty okTricepsProperty = new SimpleBooleanProperty(false);
+
+    private DoubleProperty hipProperty = new SimpleDoubleProperty();
+    private BooleanProperty disableHipProperty = new SimpleBooleanProperty(true);
+    private BooleanProperty okHipProperty = new SimpleBooleanProperty(false);
+
+    private DoubleProperty thighProperty = new SimpleDoubleProperty();
+    private BooleanProperty disableThighProperty = new SimpleBooleanProperty(true);
+    private BooleanProperty okThighProperty = new SimpleBooleanProperty(false);
+
+    // Button Calculate BF
+    private BooleanProperty disableCalculateBfProperty = new SimpleBooleanProperty(true);
+
 
     public ViewModel(){
             okGenderProperty.bind(genderManProperty.not().and(genderWomanProperty.not()));
@@ -47,6 +72,22 @@ public class ViewModel {
             disableWeightProperty.bind(heightProperty.isEqualTo(0));
             disableCalculateProperty.bind(weightProperty.isEqualTo(0));
 
+            // BF
+            disableChestProperty.bind(ageProperty.isEqualTo(0));
+            okChestProperty.bind(chestProperty.isNotEqualTo(0));
+            disableTricepsProperty.bind(ageProperty.isEqualTo(0));
+            okTricepsProperty.bind(tricepsProperty.isNotEqualTo(0));
+
+            disableNavelProperty.bind(chestProperty.isEqualTo(0));
+            okNavelProperty.bind(navelProperty.isNotEqualTo(0));
+            disableHipProperty.bind(tricepsProperty.isEqualTo(0));
+            okHipProperty.bind(hipProperty.isNotEqualTo(0));
+
+            disableThighProperty.bind(navelProperty.isEqualTo(0));
+            disableThighProperty.bind(hipProperty.isEqualTo(0));
+            okThighProperty.bind(thighProperty.isNotEqualTo(0));
+
+            disableCalculateBfProperty.bind(thighProperty.isEqualTo(0));
 
     }
 
@@ -61,7 +102,6 @@ public class ViewModel {
     public void setActivityIndexProperty(int activityIndexProperty) {
         this.activityIndexProperty.set(activityIndexProperty);
     }
-
 
     public boolean isGenderManProperty() {
         return genderManProperty.get();
@@ -165,5 +205,197 @@ public class ViewModel {
 
     public BooleanProperty disableCalculatePropertyProperty() {
         return disableCalculateProperty;
+    }
+
+    public double getChestProperty() {
+        return chestProperty.get();
+    }
+
+    public DoubleProperty chestPropertyProperty() {
+        return chestProperty;
+    }
+
+    public void setChestProperty(double chestProperty) {
+        this.chestProperty.set(chestProperty);
+    }
+
+    public boolean isDisableChestProperty() {
+        return disableChestProperty.get();
+    }
+
+    public BooleanProperty disableChestPropertyProperty() {
+        return disableChestProperty;
+    }
+
+    public void setDisableChestProperty(boolean disableChestProperty) {
+        this.disableChestProperty.set(disableChestProperty);
+    }
+
+    public boolean isOkChestProperty() {
+        return okChestProperty.get();
+    }
+
+    public BooleanProperty okChestPropertyProperty() {
+        return okChestProperty;
+    }
+
+    public void setOkChestProperty(boolean okChestProperty) {
+        this.okChestProperty.set(okChestProperty);
+    }
+
+    public double getNavelProperty() {
+        return navelProperty.get();
+    }
+
+    public DoubleProperty navelPropertyProperty() {
+        return navelProperty;
+    }
+
+    public void setNavelProperty(double navelProperty) {
+        this.navelProperty.set(navelProperty);
+    }
+
+    public boolean isDisableNavelProperty() {
+        return disableNavelProperty.get();
+    }
+
+    public BooleanProperty disableNavelPropertyProperty() {
+        return disableNavelProperty;
+    }
+
+    public void setDisableNavelProperty(boolean disableNavelProperty) {
+        this.disableNavelProperty.set(disableNavelProperty);
+    }
+
+    public boolean isOkNavelProperty() {
+        return okNavelProperty.get();
+    }
+
+    public BooleanProperty okNavelPropertyProperty() {
+        return okNavelProperty;
+    }
+
+    public void setOkNavelProperty(boolean okNavelProperty) {
+        this.okNavelProperty.set(okNavelProperty);
+    }
+
+    public double getTricepsProperty() {
+        return tricepsProperty.get();
+    }
+
+    public DoubleProperty tricepsPropertyProperty() {
+        return tricepsProperty;
+    }
+
+    public void setTricepsProperty(double tricepsProperty) {
+        this.tricepsProperty.set(tricepsProperty);
+    }
+
+    public boolean isDisableTricepsProperty() {
+        return disableTricepsProperty.get();
+    }
+
+    public BooleanProperty disableTricepsPropertyProperty() {
+        return disableTricepsProperty;
+    }
+
+    public void setDisableTricepsProperty(boolean disableTricepsProperty) {
+        this.disableTricepsProperty.set(disableTricepsProperty);
+    }
+
+    public boolean isOkTricepsProperty() {
+        return okTricepsProperty.get();
+    }
+
+    public BooleanProperty okTricepsPropertyProperty() {
+        return okTricepsProperty;
+    }
+
+    public void setOkTricepsProperty(boolean okTricepsProperty) {
+        this.okTricepsProperty.set(okTricepsProperty);
+    }
+
+    public double getHipProperty() {
+        return hipProperty.get();
+    }
+
+    public DoubleProperty hipPropertyProperty() {
+        return hipProperty;
+    }
+
+    public void setHipProperty(double hipProperty) {
+        this.hipProperty.set(hipProperty);
+    }
+
+    public boolean isDisableHipProperty() {
+        return disableHipProperty.get();
+    }
+
+    public BooleanProperty disableHipPropertyProperty() {
+        return disableHipProperty;
+    }
+
+    public void setDisableHipProperty(boolean disableHipProperty) {
+        this.disableHipProperty.set(disableHipProperty);
+    }
+
+    public boolean isOkHipProperty() {
+        return okHipProperty.get();
+    }
+
+    public BooleanProperty okHipPropertyProperty() {
+        return okHipProperty;
+    }
+
+    public void setOkHipProperty(boolean okHipProperty) {
+        this.okHipProperty.set(okHipProperty);
+    }
+
+    public double getThighProperty() {
+        return thighProperty.get();
+    }
+
+    public DoubleProperty thighPropertyProperty() {
+        return thighProperty;
+    }
+
+    public void setThighProperty(double thighProperty) {
+        this.thighProperty.set(thighProperty);
+    }
+
+    public boolean isDisableThighProperty() {
+        return disableThighProperty.get();
+    }
+
+    public BooleanProperty disableThighPropertyProperty() {
+        return disableThighProperty;
+    }
+
+    public void setDisableThighProperty(boolean disableThighProperty) {
+        this.disableThighProperty.set(disableThighProperty);
+    }
+
+    public boolean isOkThighProperty() {
+        return okThighProperty.get();
+    }
+
+    public BooleanProperty okThighPropertyProperty() {
+        return okThighProperty;
+    }
+
+    public void setOkThighProperty(boolean okThighProperty) {
+        this.okThighProperty.set(okThighProperty);
+    }
+
+    public boolean isDisableCalculateBfProperty() {
+        return disableCalculateBfProperty.get();
+    }
+
+    public BooleanProperty disableCalculateBfPropertyProperty() {
+        return disableCalculateBfProperty;
+    }
+
+    public void setDisableCalculateBfProperty(boolean disableCalculateBfProperty) {
+        this.disableCalculateBfProperty.set(disableCalculateBfProperty);
     }
 }
