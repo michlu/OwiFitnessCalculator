@@ -6,18 +6,18 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.ToggleButton?>
 <?import javafx.scene.control.ToggleGroup?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+<?import javafx.scene.text.TextFlow?>
 
-<VBox fx:id="bfMain" alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="300.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="300.0" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.BfController">
+<VBox fx:id="whrMain" alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="300.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="300.0" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.WhrController">
    <children>
-      <Label styleClass="labelTitle" text="%title.BF">
+      <Label styleClass="labelTitle" text="%title.WHR">
          <VBox.margin>
             <Insets bottom="10.0" top="10.0" />
          </VBox.margin>
@@ -34,15 +34,14 @@
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
             <Label text="%label.age" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
-            <Label fx:id="lblMeasurement1" text="?" GridPane.halignment="CENTER" GridPane.rowIndex="2" />
-            <Label fx:id="lblMeasurement2" text="?" GridPane.halignment="CENTER" GridPane.rowIndex="3" />
+            <Label text="%label.waist" GridPane.halignment="CENTER" GridPane.rowIndex="2" />
+            <Label text="%label.hip" GridPane.halignment="CENTER" GridPane.rowIndex="3" />
             <TextField fx:id="ageTextField" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-            <TextField fx:id="measurement1TextField" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-            <TextField fx:id="measurement2TextField" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            <TextField fx:id="waistTextField" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <TextField fx:id="hipTextField" GridPane.columnIndex="1" GridPane.rowIndex="3" />
             <ToggleButton fx:id="btnMen" mnemonicParsing="false" styleClass="genderToggleButton" text="%btn.men" GridPane.columnIndex="1" GridPane.halignment="CENTER">
                <toggleGroup>
                   <ToggleGroup fx:id="toggleGender" />
@@ -54,17 +53,12 @@
                   <Font name="System Bold" size="11.0" />
                </font>
             </Label>
-            <Label fx:id="measurement1OkLabel" styleClass="okLabelCheck" text="OK" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="2">
+            <Label fx:id="waistOkLabel" styleClass="okLabelCheck" text="OK" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="2">
                <font>
                   <Font name="System Bold" size="11.0" />
                </font>
             </Label>
-            <Label fx:id="measurement2OkLabel" styleClass="okLabelCheck" text="OK" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="3">
-               <font>
-                  <Font name="System Bold" size="11.0" />
-               </font>
-            </Label>
-            <Label fx:id="measurement3OkLabel" styleClass="okLabelCheck" text="OK" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="4">
+            <Label fx:id="hipOkLabel" styleClass="okLabelCheck" text="OK" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="3">
                <font>
                   <Font name="System Bold" size="11.0" />
                </font>
@@ -74,48 +68,50 @@
                   <Insets left="10.0" />
                </padding>
             </Label>
-            <Label text="mm" GridPane.columnIndex="2" GridPane.rowIndex="2">
+            <Label text="cm" GridPane.columnIndex="2" GridPane.rowIndex="2">
                <padding>
                   <Insets left="10.0" />
                </padding>
             </Label>
-            <Label text="mm" GridPane.columnIndex="2" GridPane.rowIndex="3">
-               <padding>
-                  <Insets left="10.0" />
-               </padding>
-            </Label>
-            <TextField fx:id="measurement3TextField" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-            <Label fx:id="lblMeasurement3" text="%label.measurement3" GridPane.halignment="CENTER" GridPane.rowIndex="4" />
-            <Label text="mm" GridPane.columnIndex="2" GridPane.rowIndex="4">
+            <Label text="cm" GridPane.columnIndex="2" GridPane.rowIndex="3">
                <padding>
                   <Insets left="10.0" />
                </padding>
             </Label>
          </children>
       </GridPane>
-      <Button fx:id="btnCalculateBf" alignment="CENTER" mnemonicParsing="false" onAction="#bmiCalculate" prefWidth="300.0" text="%btn.calculate">
+      <Button fx:id="btnCalculateWhr" alignment="CENTER" mnemonicParsing="false" onAction="#Calculate" prefWidth="300.0" text="%btn.calculate">
          <VBox.margin>
             <Insets top="10.0" />
          </VBox.margin>
       </Button>
       <Button fx:id="btnReset" mnemonicParsing="false" onAction="#btnReset" prefWidth="300.0" text="Reset" />
-      <AnchorPane prefHeight="71.0" prefWidth="300.0">
+      <AnchorPane prefHeight="129.0" prefWidth="300.0">
          <children>
-            <ImageView fitHeight="150.0" fitWidth="245.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../graphics/caliperMeasuring.png" />
-               </image>
-            </ImageView>
-            <Label layoutX="213.0" layoutY="43.0" text="%label.yourbf">
+            <Label fx:id="resultWhr" layoutX="232.0" layoutY="77.0" text="___">
                <font>
-                  <Font size="13.0" />
+                  <Font size="20.0" />
                </font>
             </Label>
-            <Label fx:id="resultBf" layoutX="214.0" layoutY="83.0" text="____ _">
+            <TextFlow layoutX="7.0" layoutY="7.0" prefHeight="114.0" prefWidth="163.0" textAlignment="JUSTIFY">
+               <children>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="%whr.txt.info" wrappingWidth="203.951171875">
+                     <font>
+                        <Font size="10.0" />
+                     </font>
+                  </Text>
+               </children>
+            </TextFlow>
+            <Label layoutX="200.0" layoutY="64.0" text="%label.whr.your" />
+            <Label fx:id="labelWhrBmi" layoutX="219.0" layoutY="27.0" textFill="RED">
                <font>
-                  <Font size="24.0" />
+                  <Font size="12.0" />
                </font>
             </Label>
          </children></AnchorPane>
+      <TextFlow fx:id="textFlow" prefHeight="57.0" prefWidth="300.0">
+         <opaqueInsets>
+            <Insets left="10.0" right="10.0" />
+         </opaqueInsets></TextFlow>
    </children>
 </VBox>

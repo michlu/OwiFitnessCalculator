@@ -236,8 +236,9 @@ public class Model {
         int gender = user.getGender();
 
         String txt = "";
+
         if(gender == 1){ // Man
-            if (whr > 1) {
+            if (whr >= 1) {
                 txt = bundle.getString("result.whr.man1"); // Otylosc aneroidalna (jablko)
             }
             else{
@@ -245,7 +246,7 @@ public class Model {
             }
         }
         else{ // Woman
-            if (whr > 0.8) {
+            if (whr >= 0.8) {
                 txt = bundle.getString("result.whr.woman1"); // Otylosc aneroidalna (jablko)
             }
             else{

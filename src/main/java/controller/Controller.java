@@ -19,17 +19,12 @@ public class Controller {
     ViewModel viewModel = new ViewModel();
     User user = new User();
 
-    @FXML private VBox vboxMenu;
-    @FXML private VBox vboxBMI;
     @FXML private BorderPane menuBorderPane;
-    @FXML private VBox bmiMain, aibwMain, bmrMain, bfMain;
+    @FXML private VBox bmiMain, aibwMain, bmrMain, bfMain, whrMain;
 
 
     @FXML
     public void initialize(){
-
-        System.out.println("Controller-Vierwmodel = " + viewModel.toString());
-        System.out.println("Controller-User = " + user.hashCode());
 
         ResourceBundle bundle = ResourceBundle.getBundle("bundles.messages");
         FXMLLoader loader = new FXMLLoader(this.getClass().getResource("/fxml/bmi_gui.fxml"));
@@ -84,6 +79,19 @@ public class Controller {
         } catch (IOException e) {
             e.printStackTrace();
         }
+
+        loader = new FXMLLoader(this.getClass().getResource("/fxml/whr_gui.fxml"));
+        try {
+            loader.setResources(bundle);
+            whrMain = loader.load();
+            WhrController whrController = loader.getController();
+            // przekazanie do controllera ViewModel i User aby wszystkie kontrolery dzialaly na tych samych danych
+            whrController.setViewModel(viewModel);
+            whrController.setUser(user);
+            whrController.start();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     @FXML
@@ -104,5 +112,10 @@ public class Controller {
     @FXML
     public void openBF(){
         menuBorderPane.setCenter(bfMain);
+    }
+
+    @FXML
+    public void openWHR(){
+        menuBorderPane.setCenter(whrMain);
     }
 }

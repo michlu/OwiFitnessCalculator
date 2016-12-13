@@ -1,5 +1,7 @@
 package controller;
 
+import javafx.beans.property.DoubleProperty;
+import javafx.beans.property.SimpleDoubleProperty;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.Button;
@@ -7,8 +9,6 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
-import javafx.scene.text.Text;
-import javafx.scene.text.TextFlow;
 import javafx.util.StringConverter;
 import javafx.util.converter.NumberStringConverter;
 import model.Model;
@@ -34,6 +34,7 @@ public class BmiController {
     private Model model = new Model();
     private ViewModel viewModel;
     private User user;
+
 
     public void setViewModel(ViewModel viewModel) {
         this.viewModel = viewModel;
@@ -73,6 +74,8 @@ public class BmiController {
         // Button Calculate zbndowany z disable calculate
 
         btnCalculate.disableProperty().bind(viewModel.disableCalculatePropertyProperty());
+
+
     }
 
     @FXML
@@ -97,6 +100,7 @@ public class BmiController {
         labelMin.setVisible(false);
         labelMax.setVisible(false);
         labelResultBmi.setText("");
+        viewModel.bmiPropertyProperty().set(0.0);
 
     }
     public void drawRectnagleBMI(Double BMI){
@@ -148,10 +152,12 @@ public class BmiController {
         labelMax.setVisible(true);
 
         setTextFlowBmi();
+
+        viewModel.bmiPropertyProperty().set(model.obliczBmi(user));
     }
 
     public void setTextFlowBmi(){
-        labelResultBmi.setText(model.wynikTxt(user));
+        labelResultBmi.setText(model.wynikTxtBmi(user));
     }
 
     /**

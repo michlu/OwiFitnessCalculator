@@ -33,6 +33,10 @@ public class ViewModel {
     private BooleanProperty okCalculateProperty = new SimpleBooleanProperty(false);
     private BooleanProperty disableCalculateProperty = new SimpleBooleanProperty(true);
 
+    // BMi result
+    private DoubleProperty bmiProperty = new SimpleDoubleProperty();
+    private BooleanProperty disableBmiProperty = new SimpleBooleanProperty(true);
+
     // CheckBox aktywnosc
     private IntegerProperty activityIndexProperty = new SimpleIntegerProperty();
 
@@ -61,6 +65,18 @@ public class ViewModel {
     // Button Calculate BF
     private BooleanProperty disableCalculateBfProperty = new SimpleBooleanProperty(true);
 
+    // Propertisy do WHR =============================================================
+
+    private DoubleProperty waistCircumferenceProperty = new SimpleDoubleProperty();
+    private BooleanProperty disableWaistCircumferenceProperty = new SimpleBooleanProperty(true);
+    private BooleanProperty okWaistCircumferenceProperty = new SimpleBooleanProperty(false);
+
+    private DoubleProperty hipCircumferenceProperty = new SimpleDoubleProperty();
+    private BooleanProperty disableHipCircumferenceProperty = new SimpleBooleanProperty(true);
+    private BooleanProperty okHipCircumferenceProperty = new SimpleBooleanProperty(false);
+
+    // Button Calculate Whr
+    private BooleanProperty disableCalculateWhrProperty = new SimpleBooleanProperty(true);
 
     public ViewModel(){
             okGenderProperty.bind(genderManProperty.not().and(genderWomanProperty.not()));
@@ -89,18 +105,48 @@ public class ViewModel {
 
             disableCalculateBfProperty.bind(thighProperty.isEqualTo(0));
 
-    }
+            // WHR
+            disableWaistCircumferenceProperty.bind(ageProperty.isEqualTo(0));
+            okWaistCircumferenceProperty.bind(waistCircumferenceProperty.isNotEqualTo(0));
 
-    public int getActivityIndexProperty() {
-        return activityIndexProperty.get();
-    }
+            disableHipCircumferenceProperty.bind(waistCircumferenceProperty.isEqualTo(0));
+            okHipCircumferenceProperty.bind(hipCircumferenceProperty.isNotEqualTo(0));
 
-    public IntegerProperty activityIndexPropertyProperty() {
-        return activityIndexProperty;
-    }
+            disableCalculateWhrProperty.bind(hipCircumferenceProperty.isEqualTo(0));
 
+            disableBmiProperty.bind(bmiPropertyProperty().isEqualTo(0));
+    }
+    // SETERY
     public void setActivityIndexProperty(int activityIndexProperty) {
         this.activityIndexProperty.set(activityIndexProperty);
+    }
+
+    public void setBmiProperty(double bmiProperty) {
+        this.bmiProperty.set(bmiProperty);
+    }
+
+
+
+    // GETERY
+
+    public double getBmiProperty() {
+        return bmiProperty.get();
+    }
+
+    public DoubleProperty bmiPropertyProperty() {
+        return bmiProperty;
+    }
+
+    public boolean isDisableBmiProperty() {
+        return disableBmiProperty.get();
+    }
+
+    public BooleanProperty disableBmiPropertyProperty() {
+        return disableBmiProperty;
+    }
+
+    public void setDisableBmiProperty(boolean disableBmiProperty) {
+        this.disableBmiProperty.set(disableBmiProperty);
     }
 
     public boolean isGenderManProperty() {
@@ -207,16 +253,20 @@ public class ViewModel {
         return disableCalculateProperty;
     }
 
+    public int getActivityIndexProperty() {
+        return activityIndexProperty.get();
+    }
+
+    public IntegerProperty activityIndexPropertyProperty() {
+        return activityIndexProperty;
+    }
+
     public double getChestProperty() {
         return chestProperty.get();
     }
 
     public DoubleProperty chestPropertyProperty() {
         return chestProperty;
-    }
-
-    public void setChestProperty(double chestProperty) {
-        this.chestProperty.set(chestProperty);
     }
 
     public boolean isDisableChestProperty() {
@@ -227,20 +277,12 @@ public class ViewModel {
         return disableChestProperty;
     }
 
-    public void setDisableChestProperty(boolean disableChestProperty) {
-        this.disableChestProperty.set(disableChestProperty);
-    }
-
     public boolean isOkChestProperty() {
         return okChestProperty.get();
     }
 
     public BooleanProperty okChestPropertyProperty() {
         return okChestProperty;
-    }
-
-    public void setOkChestProperty(boolean okChestProperty) {
-        this.okChestProperty.set(okChestProperty);
     }
 
     public double getNavelProperty() {
@@ -251,20 +293,12 @@ public class ViewModel {
         return navelProperty;
     }
 
-    public void setNavelProperty(double navelProperty) {
-        this.navelProperty.set(navelProperty);
-    }
-
     public boolean isDisableNavelProperty() {
         return disableNavelProperty.get();
     }
 
     public BooleanProperty disableNavelPropertyProperty() {
         return disableNavelProperty;
-    }
-
-    public void setDisableNavelProperty(boolean disableNavelProperty) {
-        this.disableNavelProperty.set(disableNavelProperty);
     }
 
     public boolean isOkNavelProperty() {
@@ -275,20 +309,12 @@ public class ViewModel {
         return okNavelProperty;
     }
 
-    public void setOkNavelProperty(boolean okNavelProperty) {
-        this.okNavelProperty.set(okNavelProperty);
-    }
-
     public double getTricepsProperty() {
         return tricepsProperty.get();
     }
 
     public DoubleProperty tricepsPropertyProperty() {
         return tricepsProperty;
-    }
-
-    public void setTricepsProperty(double tricepsProperty) {
-        this.tricepsProperty.set(tricepsProperty);
     }
 
     public boolean isDisableTricepsProperty() {
@@ -299,20 +325,12 @@ public class ViewModel {
         return disableTricepsProperty;
     }
 
-    public void setDisableTricepsProperty(boolean disableTricepsProperty) {
-        this.disableTricepsProperty.set(disableTricepsProperty);
-    }
-
     public boolean isOkTricepsProperty() {
         return okTricepsProperty.get();
     }
 
     public BooleanProperty okTricepsPropertyProperty() {
         return okTricepsProperty;
-    }
-
-    public void setOkTricepsProperty(boolean okTricepsProperty) {
-        this.okTricepsProperty.set(okTricepsProperty);
     }
 
     public double getHipProperty() {
@@ -323,20 +341,12 @@ public class ViewModel {
         return hipProperty;
     }
 
-    public void setHipProperty(double hipProperty) {
-        this.hipProperty.set(hipProperty);
-    }
-
     public boolean isDisableHipProperty() {
         return disableHipProperty.get();
     }
 
     public BooleanProperty disableHipPropertyProperty() {
         return disableHipProperty;
-    }
-
-    public void setDisableHipProperty(boolean disableHipProperty) {
-        this.disableHipProperty.set(disableHipProperty);
     }
 
     public boolean isOkHipProperty() {
@@ -347,20 +357,12 @@ public class ViewModel {
         return okHipProperty;
     }
 
-    public void setOkHipProperty(boolean okHipProperty) {
-        this.okHipProperty.set(okHipProperty);
-    }
-
     public double getThighProperty() {
         return thighProperty.get();
     }
 
     public DoubleProperty thighPropertyProperty() {
         return thighProperty;
-    }
-
-    public void setThighProperty(double thighProperty) {
-        this.thighProperty.set(thighProperty);
     }
 
     public boolean isDisableThighProperty() {
@@ -371,20 +373,12 @@ public class ViewModel {
         return disableThighProperty;
     }
 
-    public void setDisableThighProperty(boolean disableThighProperty) {
-        this.disableThighProperty.set(disableThighProperty);
-    }
-
     public boolean isOkThighProperty() {
         return okThighProperty.get();
     }
 
     public BooleanProperty okThighPropertyProperty() {
         return okThighProperty;
-    }
-
-    public void setOkThighProperty(boolean okThighProperty) {
-        this.okThighProperty.set(okThighProperty);
     }
 
     public boolean isDisableCalculateBfProperty() {
@@ -395,7 +389,59 @@ public class ViewModel {
         return disableCalculateBfProperty;
     }
 
-    public void setDisableCalculateBfProperty(boolean disableCalculateBfProperty) {
-        this.disableCalculateBfProperty.set(disableCalculateBfProperty);
+    public double getWaistCircumferenceProperty() {
+        return waistCircumferenceProperty.get();
+    }
+
+    public DoubleProperty waistCircumferencePropertyProperty() {
+        return waistCircumferenceProperty;
+    }
+
+    public boolean isDisableWaistCircumferenceProperty() {
+        return disableWaistCircumferenceProperty.get();
+    }
+
+    public BooleanProperty disableWaistCircumferencePropertyProperty() {
+        return disableWaistCircumferenceProperty;
+    }
+
+    public boolean isOkWaistCircumferenceProperty() {
+        return okWaistCircumferenceProperty.get();
+    }
+
+    public BooleanProperty okWaistCircumferencePropertyProperty() {
+        return okWaistCircumferenceProperty;
+    }
+
+    public double getHipCircumferenceProperty() {
+        return hipCircumferenceProperty.get();
+    }
+
+    public DoubleProperty hipCircumferencePropertyProperty() {
+        return hipCircumferenceProperty;
+    }
+
+    public boolean isDisableHipCircumferenceProperty() {
+        return disableHipCircumferenceProperty.get();
+    }
+
+    public BooleanProperty disableHipCircumferencePropertyProperty() {
+        return disableHipCircumferenceProperty;
+    }
+
+    public boolean isOkHipCircumferenceProperty() {
+        return okHipCircumferenceProperty.get();
+    }
+
+    public BooleanProperty okHipCircumferencePropertyProperty() {
+        return okHipCircumferenceProperty;
+    }
+
+    public boolean isDisableCalculateWhrProperty() {
+        return disableCalculateWhrProperty.get();
+    }
+
+    public BooleanProperty disableCalculateWhrPropertyProperty() {
+        return disableCalculateWhrProperty;
     }
 }

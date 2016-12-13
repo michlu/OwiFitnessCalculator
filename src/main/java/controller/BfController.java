@@ -122,6 +122,7 @@ public class BfController {
         measurement1TextField.setText("");
         measurement2TextField.setText("");
         measurement3TextField.setText("");
+        resultBf.setText("____ _");
     }
 
     @FXML

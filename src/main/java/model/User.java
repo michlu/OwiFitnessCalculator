@@ -1,6 +1,4 @@
 package model;
-
-
 /**
  * @author Michlu
  * @sience 2016-11-25
@@ -62,6 +60,8 @@ public class User {
             hip = viewModel.getHipProperty(); //biodro
         }
         thigh = viewModel.getThighProperty();
+        waistCircumference = viewModel.getWaistCircumferenceProperty();
+        hipCircumference = viewModel.getHipCircumferenceProperty();
     }
 
     @Override
