@@ -20,7 +20,7 @@ public class Controller {
     User user = new User();
 
     @FXML private BorderPane menuBorderPane;
-    @FXML private VBox bmiMain, aibwMain, bmrMain, bfMain, whrMain;
+    @FXML private VBox bmiMain, aibwMain, bmrMain, bfMain, whrMain, tobMain;
 
 
     @FXML
@@ -92,6 +92,19 @@ public class Controller {
         } catch (IOException e) {
             e.printStackTrace();
         }
+
+        loader = new FXMLLoader(this.getClass().getResource("/fxml/tob_gui.fxml"));
+        try {
+            loader.setResources(bundle);
+            tobMain = loader.load();
+            TobController tobController = loader.getController();
+            // przekazanie do controllera ViewModel i User aby wszystkie kontrolery dzialaly na tych samych danych
+            tobController.setViewModel(viewModel);
+            tobController.setUser(user);
+            tobController.start();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     @FXML
@@ -117,5 +130,10 @@ public class Controller {
     @FXML
     public void openWHR(){
         menuBorderPane.setCenter(whrMain);
+    }
+
+    @FXML
+    public void openTob(){
+        menuBorderPane.setCenter(tobMain);
     }
 }

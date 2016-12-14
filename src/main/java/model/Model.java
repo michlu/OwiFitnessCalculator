@@ -1,7 +1,5 @@
 package model;
 
-import model.User;
-
 import java.util.ResourceBundle;
 
 /**
@@ -37,7 +35,6 @@ public class Model {
         double bmi = weight / (Math.pow(height, 2));
         return bmi;
     }
-
 
     public double wagaMinimalna(User user){
         double height = user.getHeight();
@@ -251,6 +248,166 @@ public class Model {
             }
             else{
                 txt = bundle.getString("result.whr.woman2"); // Otylosc ginoidalna (gruszka)
+            }
+        }
+        return txt;
+    }
+
+    // typu budowy sylwetki
+
+    //Wskaźnik wagowo-wzrostowy Queteleta I
+    //Oblicza się go dzieląc masę ciała w gramach przez wzrost [B-v] w cm.
+    public double obliczWQueteleta(User user){
+        double weight = user.getWeight(); //g
+        double height = user.getHeight(); // cm
+
+        double wq = (weight*1000)/height;
+        return wq;
+    }
+    public String wynikTxtWQueteleta(User user){
+        double wq = obliczWQueteleta(user);
+        int gender = user.getGender();
+        String txt = "";
+        if(gender == 1){ // Man
+            if (wq <= 300) {
+                txt = bundle.getString("result.wq.man1"); //wychudzenie
+            }
+            else if(wq <=319){
+                txt = bundle.getString("result.wq.man2"); //budowa bardzo słaba
+            }
+            else if(wq <=349){
+                txt = bundle.getString("result.wq.man3"); //budowa słaba
+            }
+            else if(wq <=369){
+                txt = bundle.getString("result.wq.man4"); //budowa średnio mocna
+            }
+            else if(wq <=399){
+                txt = bundle.getString("result.wq.man5"); //budowa mocna
+            }
+            else if(wq <=499){
+                txt = bundle.getString("result.wq.man6"); //budowa bardzo mocna
+            }
+            else{
+                txt = bundle.getString("result.wq.man7"); //otłuszczenie
+            }
+        }
+        else{ // Woman
+            if (wq <= 289) {
+                txt = bundle.getString("result.wq.woman1"); //budowa bardzo słaba
+            }
+            else if(wq <=314){
+                txt = bundle.getString("result.wq.woman2"); //budowa słaba
+            }
+            else if(wq <=339){
+                txt = bundle.getString("result.wq.woman3"); //budowa średnio mocna
+            }
+            else if(wq <=369){
+                txt = bundle.getString("result.wq.woman4"); //budowa mocna
+            }
+            else{
+                txt = bundle.getString("result.wq.woman5"); //budowa bardzo mocna
+            }
+        }
+        return txt;
+    }
+    //Wskaźnik budowy ciała Rohrera
+    //Oblicza się go dzieląc masę ciałą (w gramach) przez wzrost [B-v] pomnożony do potęgi trzeciej i mnożąc wynik przez 100.
+    public double obliczWRohrera(User user){
+        double weight = user.getWeight(); //g
+        double height = user.getHeight(); // cm
+
+        double wr = ((weight*1000)/Math.pow(height, 3))*100;
+        return wr;
+    }
+    public String wynikTxtWgWankegoKolasy(User user){
+        double wr = obliczWRohrera(user);
+        int gender = user.getGender();
+        String txt = "";
+        if(gender == 1){ // Man
+            if(wr <=1.24){
+                txt = bundle.getString("result.wr.wank.man1"); //smukly
+            }
+            else if(wr <=1.36){
+                txt = bundle.getString("result.wr.wank.man2"); //sredni
+            }
+            else if(wr >=1.37){
+                txt = bundle.getString("result.wr.wank.man3"); //tegi
+            }
+        }
+        else{ // Woman
+            if (wr <= 1.37) {
+                txt = bundle.getString("result.wr.wank.woman1"); //smukly
+            }
+            else if(wr <=1.58){
+                txt = bundle.getString("result.wr.wank.woman2"); //sredni
+            }
+            else if(wr >=1.59){
+                txt = bundle.getString("result.wr.wank.woman3"); //tegi
+            }
+        }
+        return txt;
+    }
+    public String wynikTxtWgKowalewskiej(User user){
+        double wr = obliczWRohrera(user);
+        int gender = user.getGender();
+        String txt = "";
+        if(gender == 1){ // Man
+            if(wr <=1.13){
+                txt = bundle.getString("result.wr.kowal.man1"); //typ leptosomiczny
+            }
+            else if(wr <=1.34){
+                txt = bundle.getString("result.wr.kowal.man2"); //typ atletyczny
+            }
+            else if(wr >=1.35){
+                txt = bundle.getString("result.wr.kowal.man3"); //typ pykniczny
+            }
+        }
+        else{ // Woman
+            if (wr <= 1.23) {
+                txt = bundle.getString("result.wr.kowal.woman1"); //typ leptosomiczny
+            }
+            else if(wr <=1.43){
+                txt = bundle.getString("result.wr.kowal.woman2"); //typ atletyczny
+            }
+            else if(wr >=1.44){
+                txt = bundle.getString("result.wr.kowal.woman3"); //typ pykniczny
+            }
+        }
+        return txt;
+    }
+    //Wskaźnik smukłości.  Używany przy wyróżnianiu typów budowy w systemie Sheldona.
+    //Oblicza się go dzieląc wzrost [B-v] w cm, przez pierwiastek sześcienny wagi w kilogramach.
+    public double obliczWSheldona(User user){
+        double weight = user.getWeight(); //g
+        double height = user.getHeight(); // cm
+
+        double ws = height/Math.cbrt(weight);
+        return ws;
+    }
+    public String wynikTxtWgSheldona(User user){
+        double ws = obliczWRohrera(user);
+        int gender = user.getGender();
+        String txt = "";
+        if(gender == 1){ // Man
+            if(ws <=39.5){
+                txt = bundle.getString("result.wr.shel.man1"); //Budowa tęga (endomorfia)
+            }
+            else if(ws <=43.2){
+                txt = bundle.getString("result.wr.shel.man2"); //Budowa średnia (mezomorfia)
+            }
+            else if(ws >=43.3){
+                txt = bundle.getString("result.wr.shel.man3"); //Budowa smukła (ektomorfia)
+            }
+        }
+        else{ // Woman
+            if (ws <= 40.7) {
+                txt = bundle.getString("result.wr.shel.woman1"); //Budowa tęga (endomorfia
+            }
+            else if(ws <=44.2){
+                txt = bundle.getString("result.wr.shel.woman2"); //Budowa średnia (mezomorfia)
+            }
+            else if(ws >=42.3){
+                txt = bundle.getString("result.wr.shel.woman3"); //Budowa smukła (ektomorfia)
             }
         }
         return txt;

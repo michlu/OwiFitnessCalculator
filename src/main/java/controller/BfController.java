@@ -119,9 +119,9 @@ public class BfController {
         btnMen.setSelected(false);
         btnWoman.setSelected(false);
         ageTextField.setText("0");
-        measurement1TextField.setText("");
-        measurement2TextField.setText("");
-        measurement3TextField.setText("");
+        measurement1TextField.setText("0");
+        measurement2TextField.setText("0");
+        measurement3TextField.setText("0");
         resultBf.setText("____ _");
     }
 
