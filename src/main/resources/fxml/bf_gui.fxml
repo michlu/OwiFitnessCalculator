@@ -93,7 +93,7 @@
             </Label>
          </children>
       </GridPane>
-      <Button fx:id="btnCalculateBf" alignment="CENTER" mnemonicParsing="false" onAction="#bmiCalculate" prefWidth="300.0" text="%btn.calculate">
+      <Button fx:id="btnCalculateBf" alignment="CENTER" mnemonicParsing="false" onAction="#bfCalculate" prefWidth="300.0" text="%btn.calculate">
          <VBox.margin>
             <Insets top="10.0" />
          </VBox.margin>

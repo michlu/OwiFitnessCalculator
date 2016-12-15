@@ -7,7 +7,6 @@ import javafx.scene.text.Text;
 import javafx.scene.text.TextAlignment;
 import javafx.scene.text.TextFlow;
 import javafx.util.StringConverter;
-import javafx.util.converter.CurrencyStringConverter;
 import javafx.util.converter.NumberStringConverter;
 import javafx.util.converter.PercentageStringConverter;
 import model.Model;
@@ -21,7 +20,7 @@ import java.util.ResourceBundle;
  * @author Michlu
  * @sience 2016-12-13
  */
-public class WhrController {
+public class WhrController implements ControllerHelper {
 
     @FXML private ToggleButton btnMen, btnWoman;
     @FXML private TextField ageTextField;
@@ -87,9 +86,9 @@ public class WhrController {
     @FXML
     public void initialize(){
         // TextFieldy przyjmujace tylko liczby
-        onlnyNumberTextField(ageTextField);
-        onlnyNumberTextField(hipTextField);
-        onlnyNumberTextField(waistTextField);
+        OnlyNumberTextField.onlyNumberTextField(ageTextField);
+        OnlyNumberTextField.onlyNumberTextField(hipTextField);
+        OnlyNumberTextField.onlyNumberTextField(waistTextField);
 
         textFlow.setTextAlignment(TextAlignment.JUSTIFY);
         textFlow.setPadding(new Insets(0,10,0,10));
@@ -115,17 +114,5 @@ public class WhrController {
 
         text.setText(model.wynikTxtWhr(user));
         textFlow.getChildren().add(text);
-    }
-
-    /**
-     * Zamienia standardowy TextField na przyjmujacy tylko liczby
-     * @param textField przyjmuje referencje pola tekstowego
-     */
-    public void onlnyNumberTextField(TextField textField){
-        textField.textProperty().addListener((observable, oldValue, newValue) -> {
-            if(!newValue.matches("[0-9]*")){
-                textField.setText(oldValue);
-            }
-        });
     }
 }

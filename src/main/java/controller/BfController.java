@@ -2,8 +2,6 @@ package controller;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
-import javafx.scene.paint.Color;
-import javafx.scene.shape.Rectangle;
 import javafx.util.StringConverter;
 import javafx.util.converter.NumberStringConverter;
 import model.Model;
@@ -17,7 +15,7 @@ import java.util.ResourceBundle;
  * @author Michlu
  * @sience 2016-12-12
  */
-public class BfController {
+public class BfController implements ControllerHelper {
 
     @FXML private ToggleButton btnMen, btnWoman;
     @FXML private TextField ageTextField;
@@ -108,12 +106,12 @@ public class BfController {
     @FXML
     public void initialize(){
         // TextFieldy przyjmujace tylko liczby
-        onlnyNumberTextField(ageTextField);
-        onlnyNumberTextField(measurement1TextField);
-        onlnyNumberTextField(measurement2TextField);
-        onlnyNumberTextField(measurement3TextField);
-
+        OnlyNumberTextField.onlyNumberTextField(ageTextField);
+        OnlyNumberTextField.onlyNumberTextField(measurement1TextField);
+        OnlyNumberTextField.onlyNumberTextField(measurement2TextField);
+        OnlyNumberTextField.onlyNumberTextField(measurement3TextField);
     }
+
     @FXML
     public void btnReset(){
         btnMen.setSelected(false);
@@ -126,20 +124,8 @@ public class BfController {
     }
 
     @FXML
-    public void bmiCalculate(){
+    public void bfCalculate(){
         user.getAtributes(viewModel);
         resultBf.setText(String.format("%.2f", model.obliczBF(user)) + "%");
-    }
-
-    /**
-     * Zamienia standardowy TextField na przyjmujacy tylko liczby
-     * @param textField przyjmuje referencje pola tekstowego
-     */
-    public void onlnyNumberTextField(TextField textField){
-        textField.textProperty().addListener((observable, oldValue, newValue) -> {
-            if(!newValue.matches("[0-9]*")){
-                textField.setText(oldValue);
-            }
-        });
     }
 }

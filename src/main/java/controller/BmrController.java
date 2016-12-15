@@ -1,17 +1,7 @@
 package controller;
 
-import javafx.beans.Observable;
-import javafx.beans.property.ListProperty;
-import javafx.beans.property.SimpleListProperty;
-import javafx.beans.property.StringProperty;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableArray;
-import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
-import javafx.scene.shape.Rectangle;
 import javafx.util.StringConverter;
 import javafx.util.converter.NumberStringConverter;
 import model.Model;
@@ -26,7 +16,7 @@ import java.util.ResourceBundle;
  * @author Michlu
  * @sience 2016-12-08
  */
-public class BmrController {
+public class BmrController implements ControllerHelper {
 
     @FXML private ToggleButton btnMen, btnWoman;
     @FXML private Button btnCalculate;
@@ -100,8 +90,9 @@ public class BmrController {
 
     @FXML
     public void initialize(){
-
-
+        OnlyNumberTextField.onlyNumberTextField(ageTextField);
+        OnlyNumberTextField.onlyNumberTextField(heightTextField);
+        OnlyNumberTextField.onlyNumberTextField(weightTextField);
     }
 
     @FXML

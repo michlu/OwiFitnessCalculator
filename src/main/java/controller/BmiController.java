@@ -1,7 +1,5 @@
 package controller;
 
-
-import javafx.animation.Animation;
 import javafx.animation.TranslateTransition;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
@@ -12,10 +10,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.paint.CycleMethod;
 import javafx.scene.paint.LinearGradient;
 import javafx.scene.paint.Stop;
-import javafx.scene.shape.Line;
 import javafx.scene.shape.Polygon;
-import javafx.scene.shape.Rectangle;
-import javafx.scene.shape.StrokeLineCap;
 import javafx.util.Duration;
 import javafx.util.StringConverter;
 import javafx.util.converter.NumberStringConverter;
@@ -23,13 +18,11 @@ import model.Model;
 import model.User;
 import model.ViewModel;
 
-
-
 /**
  * @author Michlu
  * @sience 2016-11-25
  */
-public class BmiController {
+public class BmiController implements ControllerHelper {
 
     @FXML private ToggleButton btnMen, btnWoman;
     @FXML private Button btnCalculate;
@@ -84,23 +77,20 @@ public class BmiController {
 
         btnCalculate.disableProperty().bind(viewModel.disableCalculatePropertyProperty());
 
-
+        // Animacja
         transition = new TranslateTransition();
-
         transition.setNode(arrow);
-
         startAnimationArrow();
     }
 
     @FXML
     public void initialize(){
-
         // TextFieldy przyjmujace tylko liczby
-        onlnyNumberTextField(ageTextField);
-        onlnyNumberTextField(heightTextField);
-        onlnyNumberTextField(weightTextField);
-
+        OnlyNumberTextField.onlyNumberTextField(heightTextField);
+        OnlyNumberTextField.onlyNumberTextField(weightTextField);
+        OnlyNumberTextField.onlyNumberTextField(ageTextField);
     }
+
     @FXML
     public void btnReset(){
         btnMen.setSelected(false);
@@ -117,8 +107,8 @@ public class BmiController {
         startAnimationArrow();
 
     }
-    public void stopAnimationArrow(Double BMI){
 
+    public void stopAnimationArrow(Double BMI){
         transition.setAutoReverse(false);
         transition.setCycleCount(1);
         transition.stop();
@@ -127,28 +117,21 @@ public class BmiController {
         int stopPunkt = 0;
         if (BMI <= 18.5) {
             stopPunkt = (int) ((BMI)*3.24);
-            System.out.println(stopPunkt);
         } else if (BMI >18.5 && BMI <= 24.9) {
             stopPunkt = (int) ((BMI-18.5)*9.35)+60;
-            System.out.println(stopPunkt);
         } else if (BMI >24.9 && BMI <= 29.9) {
             stopPunkt = (int) ((BMI-24.9)*12)+120;
-            System.out.println(stopPunkt);
         } else if (BMI >29.9 && BMI <= 34.9) {
             stopPunkt = (int) ((BMI-29.9)*12)+180;
-            System.out.println(stopPunkt);
         } else if (BMI >34.9 && BMI <= 39.9) {
             stopPunkt = (int) ((BMI-34.9)*12)+240;
-            System.out.println(stopPunkt);
         } else {
             stopPunkt = 300;
-            System.out.println(stopPunkt);
         }
-
-
         transition.setToX(stopPunkt);
         transition.play();
     }
+
     public  void startAnimationArrow(){
         arrow.setTranslateX(0);
         transition.setDuration(Duration.seconds(5));
@@ -204,7 +187,6 @@ public class BmiController {
         yourBMI.setVisible(true);
     }
 
-
     @FXML
     public void bmiCalculate(){
         user.getAtributes(viewModel);
@@ -216,24 +198,8 @@ public class BmiController {
         labelMax.setText(String.format("%.1f", model.wagaMaksymalna(user)) + "kg");
         labelMax.setVisible(true);
 
-        setTextFlowBmi();
+        labelResultBmi.setText(model.wynikTxtBmi(user));
         stopAnimationArrow(model.obliczBmi(user));
         viewModel.bmiPropertyProperty().set(model.obliczBmi(user));
-    }
-
-    public void setTextFlowBmi(){
-        labelResultBmi.setText(model.wynikTxtBmi(user));
-    }
-
-    /**
-     * Zamienia standardowy TextField na przyjmujacy tylko liczby
-     * @param textField przyjmuje referencje pola tekstowego
-     */
-    public void onlnyNumberTextField(TextField textField){
-        textField.textProperty().addListener((observable, oldValue, newValue) -> {
-            if(!newValue.matches("[0-9]*")){
-                textField.setText(oldValue);
-            }
-        });
     }
 }

@@ -2,8 +2,6 @@ package controller;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
-import javafx.scene.paint.Color;
-import javafx.scene.shape.Rectangle;
 import javafx.util.StringConverter;
 import javafx.util.converter.NumberStringConverter;
 import model.Model;
@@ -15,7 +13,7 @@ import model.ViewModel;
  * @author Michlu
  * @sience 2016-12-14
  */
-public class TobController {
+public class TobController implements ControllerHelper {
 
     @FXML private ToggleButton btnMen, btnWoman;
     @FXML private Button btnCalculate;
@@ -25,11 +23,9 @@ public class TobController {
 
     @FXML private Label labelWq, labelWr, labelSh, labelWqTxt, labelWrTxt1, labelWrTxt2, labelShTxt;
 
-
     private Model model = new Model();
     private ViewModel viewModel;
     private User user;
-
 
     public void setViewModel(ViewModel viewModel) {
         this.viewModel = viewModel;
@@ -62,18 +58,15 @@ public class TobController {
         // Button Calculate zbndowany z disable calculate
 
         btnCalculate.disableProperty().bind(viewModel.disableCalculatePropertyProperty());
-
-
     }
 
     @FXML
     public void initialize(){
-
         // TextFieldy przyjmujace tylko liczby
-        onlnyNumberTextField(heightTextField);
-        onlnyNumberTextField(weightTextField);
-
+        OnlyNumberTextField.onlyNumberTextField(heightTextField);
+        OnlyNumberTextField.onlyNumberTextField(weightTextField);
     }
+
     @FXML
     public void btnReset(){
         btnMen.setSelected(false);
@@ -101,18 +94,5 @@ public class TobController {
 
         labelSh.setText(String.format("%.1f", model.obliczWSheldona(user)));
         labelShTxt.setText(model.wynikTxtWgSheldona(user));
-    }
-
-
-    /**
-     * Zamienia standardowy TextField na przyjmujacy tylko liczby
-     * @param textField przyjmuje referencje pola tekstowego
-     */
-    public void onlnyNumberTextField(TextField textField){
-        textField.textProperty().addListener((observable, oldValue, newValue) -> {
-            if(!newValue.matches("[0-9]*")){
-                textField.setText(oldValue);
-            }
-        });
     }
 }

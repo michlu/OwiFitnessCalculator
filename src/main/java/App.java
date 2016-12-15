@@ -1,16 +1,12 @@
-import controller.BmiController;
 import javafx.application.Application;
-import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
-import model.User;
-import model.ViewModel;
+
 
 import java.util.Locale;
-import java.util.ResourceBundle;
 
 /**
  * @author Michlu
@@ -18,17 +14,15 @@ import java.util.ResourceBundle;
  */
 public class App extends Application {
 
-
     public static void main(String[] args) {
         launch(args);
     }
 
     public void start(Stage primaryStage) throws Exception {
-        Locale.setDefault(new Locale("pl"));
+//        Locale.setDefault(new Locale("pl"));
 
         FXMLLoader loader = new FXMLLoader(this.getClass().getResource("/fxml/gui.fxml"));
         Pane pane = loader.load();
-
 
         Scene scene = new Scene(pane);
         scene.getStylesheets().add(getClass().getResource("/css/themeBlue.css").toExternalForm());
@@ -40,6 +34,5 @@ public class App extends Application {
         stage.getIcons().add(new Image("/graphics/icon_bmi.png"));
         stage.setResizable(false);
         stage.show();
-
     }
 }

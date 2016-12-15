@@ -102,6 +102,7 @@ public class Controller {
             tobController.setViewModel(viewModel);
             tobController.setUser(user);
             tobController.start();
+
         } catch (IOException e) {
             e.printStackTrace();
         }
