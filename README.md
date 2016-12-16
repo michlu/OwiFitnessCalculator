@@ -1,11 +1,11 @@
 # OwiFitnessCalculator
 
 Kalkulator fitnes dla obliczeń: 
-
-BMI - wskaźnik masy ciała
-AIBW - należna masa ciała
-BMR - wskaźnik podstawowej przemiany materii
-BF - poziom tłuszczu w organiźmie
-WHR - wskaźnik talia-biodra (określajacy typ otyłości)
-ToB - rodzaj budowy ciała
+<br>
+BMI - wskaźnik masy ciała<br>
+AIBW - należna masa ciała<br>
+BMR - wskaźnik podstawowej przemiany materii<br>
+BF - poziom tłuszczu w organiźmie<br>
+WHR - wskaźnik talia-biodra (określajacy typ otyłości)<br>
+ToB - rodzaj budowy ciała<br>
 
