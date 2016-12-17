@@ -13,4 +13,4 @@ Prezentacja:<br>
 https://youtu.be/G-fNRfLd0EA
 
 Ikona po przeróbkach pochodzi z:<br>
-http://www.freeiconspng.com/
+http://www.freeiconspng.com/free-images/fitness-icon-png-280
