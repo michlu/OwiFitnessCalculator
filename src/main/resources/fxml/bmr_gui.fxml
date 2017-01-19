@@ -95,12 +95,12 @@
             <Label layoutX="158.0" layoutY="6.0" text="%bmr.label.harris" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="5.0" />
             <Slider blockIncrement="50.0" layoutX="5.0" layoutY="141.0" majorTickUnit="100.0" max="400.0" min="-400.0" minorTickCount="50" prefHeight="31.0" prefWidth="290.0" showTickLabels="true" snapToTicks="true" />
             <Label layoutX="132.0" layoutY="125.0" text="%bmr.label.calories" />
-            <Label fx:id="labelResultHarris" layoutX="209.0" layoutY="30.0" AnchorPane.leftAnchor="50.0">
+            <Label fx:id="labelResultMifflin" layoutX="209.0" layoutY="30.0" AnchorPane.leftAnchor="50.0">
                <font>
                   <Font size="13.0" />
                </font>
             </Label>
-            <Label fx:id="labelResultMifflin" layoutX="58.0" layoutY="30.0" AnchorPane.rightAnchor="50.0">
+            <Label fx:id="labelResultHarris" layoutX="58.0" layoutY="30.0" AnchorPane.rightAnchor="50.0">
                <font>
                   <Font size="13.0" />
                </font>

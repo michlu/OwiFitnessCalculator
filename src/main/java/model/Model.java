@@ -26,6 +26,17 @@ public class Model {
         return avg;
     }
 
+    /**
+     * Zaokragla liczbe do dwoch miejsc po przecinku
+     */
+    public static double roundDouble(double value){
+        value *= 100;
+        value = Math.round(value);
+        value /= 100;
+        System.out.println(value);
+        return value;
+    }
+
     public static double obliczBmi(User user) {
         double height = user.getHeight();
         double weight = user.getWeight();
@@ -48,10 +59,7 @@ public class Model {
     }
 
     public String wynikTxtBmi(User user) {
-        double height = user.getHeight();
-        height = height / 100;
-        double bmi = user.getWeight() / (Math.pow(height, 2));
-
+        double bmi = obliczBmi(user);
         String txt = "";
         if (bmi < 18.5) {
             txt = bundle.getString("result.bmi.underweight");
@@ -71,11 +79,9 @@ public class Model {
     // AIBW
     public double wagaNalezna(User user){
         double height = user.getHeight();
-
         // wzor waga nalezna = 20,5 x wzrost (w metrach) do kwadratu
         height = height / 100;
         double wn = 20.5 * (Math.pow(height, 2));
-
         return wn;
     }
 
@@ -385,7 +391,7 @@ public class Model {
         return ws;
     }
     public String wynikTxtWgSheldona(User user){
-        double ws = obliczWRohrera(user);
+        double ws = obliczWSheldona(user);
         int gender = user.getGender();
         String txt = "";
         if(gender == 1){ // Man
