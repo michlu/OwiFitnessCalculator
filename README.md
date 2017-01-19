@@ -1,4 +1,6 @@
 # OwiFitnessCalculator (PL/EN)
+JavaFx, model MVC, test model JUnit
+
 
 <b>Kalkulator fitness dla obliczeń: </b>
 <br>
